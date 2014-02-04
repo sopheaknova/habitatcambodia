@@ -12,7 +12,6 @@
 				<strong>Workplace: </strong><?php echo get_post_meta($post->ID, 'o_job_location', 23231); ?><br />
                 <strong>Report to: </strong><?php echo get_post_meta($post->ID, 'o_job_report_to', 23231); ?><br />
                 <strong>Job Type: </strong><?php echo get_post_meta($post->ID, 'o_job_type', 23231); ?><br />
-                <strong>Job Application: </strong><a href="<?php echo $job_app_from; ?>">Download application form</a>
             </p>
             <?php the_content(); ?>
             
