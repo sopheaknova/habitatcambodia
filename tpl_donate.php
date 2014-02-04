@@ -14,7 +14,7 @@ Template Name: Donate Page
 <div style="background:url(<?php get_option_tree('bg_donate_page', '', true); ?>) 50% 0 no-repeat; height:475px; border-bottom:5px solid #F0EAD7; border-top:5px solid #F0EAD7;">
 	<div class="wrap relative">
 	
-        <div class="content-box">
+        <!-- <div class="content-box">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>        	
             <?php the_content(); ?>
             
@@ -25,8 +25,8 @@ Template Name: Donate Page
             <p align="center">       
             <a href="https://www.habitat.org/cd/giving/donate.aspx?link=300" class="round-btn">Donate Now</a>        
             </p>
-        </div>    
-        <div class="content-box-bg"></div>
+        </div> -->    
+        <!-- <div class="content-box-bg"></div>-->
     
     </div>
     <!--/wrap-->

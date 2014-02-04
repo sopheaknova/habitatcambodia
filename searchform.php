@@ -5,4 +5,6 @@
                 <!--<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />-->
 			</fieldset>
         </form>
+        
+        <a href="<?php echo get_permalink(get_option_tree('url_donate_page', '', false)); ?>" class="button">Donate</a>
 </div>    

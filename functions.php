@@ -68,12 +68,12 @@ register_nav_menus( array(
 
 ## RENAME POSE MENU
 
-function ds_posts_menu_renamed() {
+/*function ds_posts_menu_renamed() {
 global $menu;
 	unset($menu[5]);
 	$menu[5] = array( __('Highlights'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu-top menu-icon-post', 'menu-posts', 'div' );
 }
-add_action('_admin_menu','ds_posts_menu_renamed');
+add_action('_admin_menu','ds_posts_menu_renamed');*/
 
 
 ## Adding a CSS class to the all last menu items
@@ -127,6 +127,98 @@ function limit_word($desc, $num){
 	
 }
 
+##	Blog navigation
+
+if ( !function_exists('sp_pagination') ) {
+
+	function sp_pagination( $pages = '', $range = 2 ) {
+
+		$showitems = ( $range * 2 ) + 1;
+
+		global $paged, $wp_query;
+
+		if( empty( $paged ) )
+			$paged = 1;
+
+		if( $pages == '' ) {
+
+			$pages = $wp_query->max_num_pages;
+
+			if( !$pages )
+				$pages = 1;
+
+		}
+
+		if( 1 != $pages ) {
+
+			$output = '<nav class="pagination">';
+
+			// if( $paged > 2 && $paged >= $range + 1 /*&& $showitems < $pages*/ )
+				// $output .= '<a href="' . get_pagenum_link( 1 ) . '" class="next">&laquo; ' . __('First', 'sptheme_admin') . '</a>';
+
+			if( $paged > 1 /*&& $showitems < $pages*/ )
+				$output .= '<a href="' . get_pagenum_link( $paged - 1 ) . '" class="next">&larr; ' . __('Previous', 'sptheme') . '</a>';
+
+			for ( $i = 1; $i <= $pages; $i++ )  {
+
+				if ( 1 != $pages && ( !( $i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems ) )
+					$output .= ( $paged == $i ) ? '<span class="current">' . $i . '</span>' : '<a href="' . get_pagenum_link( $i ) . '">' . $i . '</a>';
+
+			}
+
+			if ( $paged < $pages /*&& $showitems < $pages*/ )
+				$output .= '<a href="' . get_pagenum_link( $paged + 1 ) . '" class="prev">' . __('Next', 'sptheme') . ' &rarr;</a>';
+
+			// if ( $paged < $pages - 1 && $paged + $range - 1 <= $pages /*&& $showitems < $pages*/ )
+				// $output .= '<a href="' . get_pagenum_link( $pages ) . '" class="prev">' . __('Last', 'sptheme_admin') . ' &raquo;</a>';
+
+			$output .= '</nav>';
+
+			return $output;
+
+		}
+
+	}
+
+}
+
+## Get first image from post
+
+function get_first_image() {
+  global $post, $posts;
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  /*if(empty($first_img)){ //Defines a default image
+    $first_img = "/images/default.jpg";
+  }*/
+  return $first_img;
+}
+
+## Get Most Racent posts from Category
+
+function sp_last_posts_cat($numberOfPosts = 5 , $cats = 1){
+	global $post;
+	$orig_post = $post;
+	
+	if ($offset)
+		$lastPosts = get_posts('category='.$cats.'&numberposts='.$numberOfPosts.'&offset='.$offset);
+	else
+		$lastPosts = get_posts('category='.$cats.'&numberposts='.$numberOfPosts);	
+	foreach($lastPosts as $post): setup_postdata($post);
+?>
+<li>
+	<a href="<?php the_permalink(); ?>"><?php the_title();?></a>
+	<span class="datepost"><?php the_time('F j, Y') ?></span>
+</li>
+<?php endforeach;
+	$post = $orig_post;
+	wp_reset_postdata();
+}
+
 ## Register Widgets Sidbar
 
 function nova_widgets_init() { 
@@ -169,11 +261,37 @@ function nova_widgets_init() {
 		)
 	);
 	
-	// Area 3, located at the footer page wide background Donate tempage.	
+	// Area 4, located at the footer page wide background Donate tempage.	
 	register_sidebar(
 		array(
 			'id' => 'footer-side-donate-template',
 			'name' => __( 'Footer Sidebar on Donate Page' ),
+			'description' => __( 'The block for putting image box' ),
+			'before_widget' => '<div id="%1$s" class="widget box %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>'
+		)
+	);
+	
+	// Area 5, located at the footer page wide background MBB tempage.	
+	register_sidebar(
+		array(
+			'id' => 'footer-side-mbb-template',
+			'name' => __( 'Footer Sidebar on MBB Page' ),
+			'description' => __( 'The block for putting image box' ),
+			'before_widget' => '<div id="%1$s" class="widget box %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>'
+		)
+	);
+	
+	// Area 5, located at the footer page wide background MBB tempage.	
+	register_sidebar(
+		array(
+			'id' => 'youth-build-template',
+			'name' => __( 'Youth Build Page' ),
 			'description' => __( 'The block for putting image box' ),
 			'before_widget' => '<div id="%1$s" class="widget box %2$s">',
 			'after_widget' => '</div>',
@@ -189,8 +307,11 @@ add_action( 'widgets_init', 'nova_widgets_init' );
 
 ## DEFINE THEME CONSTANTS
 
-define(MSF, TEMPLATEPATH."/o_framework/");
-define(TINYMCE, TEMPLATEPATH."/tinymce/");
+define('MSF', TEMPLATEPATH."/o_framework/");
+define('TINYMCE', TEMPLATEPATH."/tinymce/");
+
+include ( MSF . 'widget-category.php' );
+register_widget( 'sp_widget_categort' );
 
 ## CREATE ARRAY OF INCLUDES
 

@@ -162,7 +162,7 @@ $("#quickviews div:last-child, .c2 ul li:last-child, .c1 div.one_half:last-child
 	     ADDITIONAL CODE FOR FEATURED IMAGES
 ***************************************************/
 jQuery(document).ready(function($){
-	$('#featured').nivoSlider({
+	$('#featured, #yb-slides').nivoSlider({
 		effect:'fade',
 		animSpeed: 300,
 		pauseTime:5000
@@ -182,7 +182,7 @@ jQuery(document).ready(function($){
 	     ADDITIONAL CODE FOR FONT EMBEDED
 ***************************************************/
 jQuery(document).ready(function($){
-	Cufon.replace('h1, h2, h3, h4, h5, h6', {
+	Cufon.replace('h1, h2, h3, h4, h5, h6, .cufont', {
 			hover: false, fontFamily: 'One Stroke Script Let'});
 	Cufon.replace('.c1 h2, .c1 h3, .c1 h4, .c1 h5, .c1 h6', {
 			hover: false, fontFamily: 'Vegur'});

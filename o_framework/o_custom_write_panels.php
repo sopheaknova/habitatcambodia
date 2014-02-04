@@ -31,7 +31,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </ul>        
 </div>
 
-<?
+<?php
 }
 
 function o_save_slider_settings ($post_id) {
@@ -94,7 +94,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </ul>        
 </div>
 
-<?
+<?php
 }
 
 function o_save_job_settings ($post_id) {
@@ -153,7 +153,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </ul>        
 </div>
 
-<?
+<?php
 }
 
 function o_save_event_settings ($post_id) {
@@ -206,7 +206,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </ul>        
 </div>
 
-<?
+<?php
 }
 
 function o_save_partner_settings ($post_id) {
@@ -276,7 +276,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </div>              
 </div>
 
-<?
+<?php
 }
 
 function o_save_gallery_settings ($post_id) {
@@ -335,7 +335,7 @@ wp_nonce_field( plugin_basename(__FILE__), 'myplugin_noncename' );
 </ul>        
 </div>
 
-<?
+<?php
 }
 
 function o_save_newsroom_settings ($post_id) {
@@ -359,6 +359,3 @@ function o_save_newsroom_settings ($post_id) {
   update_post_meta($post_id, 'o_roomfile_eng_link', $_POST['o_roomfile_eng_link']);    
  
 }
-
-
-?>

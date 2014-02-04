@@ -41,7 +41,7 @@ table th, table td{
 	margin-bottom:30px;
 }	
 	#logo {
-		width:253px;
+		width:201px;
 		height:104px;
 		float:left;
 		margin-right:20px;
@@ -136,6 +136,9 @@ table th, table td{
 	float:left;
 	min-height:645px;
 }
+#content .c1 span{
+	display:inline-block;
+}
 
 #content .c1 h2{
 	padding-bottom:5px;
@@ -194,11 +197,14 @@ table th, table td{
 	border:5px solid #F0EAD7;
 }
 
-#content .c2 ul li a{
+#content .c2 ul li{
 	border-bottom:1px dotted #959595;
 	background:url(../images/bullet.gif) 0 9px no-repeat;
-	display:block;
 	padding:5px 12px;
+}
+
+#content .c2 ul li a{
+	display:block;
 	font-weight:bold;
 }
 
@@ -206,24 +212,50 @@ table th, table td{
 	color:#6e5e4c;
 }
 
-#content .c2 ul li.last a{
+#content .c2 ul li.last{
 	border-bottom:none;
 }
 
 #footer{
 	font-size:11px;
+	margin-top:70px;
 }	
+	.footer-patern{
+		background:url(../images/bg-footer.png) center top repeat-x;
+		height:43px;
+	}
+	.footer-content{
+		background-color:#06438b;	
+	}
+	
+	.footer-wrap{width:960px; margin:0 auto; padding:20px 0;}
 
 	#footer-links li{
 		display:inline;
 	}	
 	
-	#footer-links a{
-		color:#333;
+	#footer-links a, .footer-content{
+		color:#99ccff;
 	}
 	
 	#footer-links a:hover{
-		color:#005596;
+		color:#fff;
+	}
+	.copyright{
+		float:left;
+		width:450px;	
+	}
+	.social-network{
+		float:right;
+		width:300px;
+		text-align:right;
+	}
+	.social-network span{display:inline-block;}
+	.social-network img{
+		opacity:0.8;	
+	}
+	.social-network img:hover{
+		opacity:1;
 	}
 	
 .fullsize-image{
@@ -264,6 +296,33 @@ table th, table td{
 		font-size:13px;
 	}
 	
+	.content-box-mbb{
+		width:920px;
+		height:290px;
+		position:absolute;
+		right:5px;
+		top:65px;
+		z-index:11;
+		color:#fff;		
+		padding:10px;
+		font-size:13px;
+	}
+		.content-box-mbb .col{
+			width:430px;
+			float:left;	
+		}
+		.content-box-mbb .cufont{font-size:42px; color:#fff;}
+		.content-box-mbb p{
+			font-size:13px;
+			padding-bottom:10px;
+		}
+		.content-box-mbb ul{list-style:disc; padding-left:20px;}
+		.content-box-mbb .video{
+			width:450px;
+			float:right;
+			border:5px solid #f8f4eb;
+		}
+	
 	.content-box h2, .content-box-2 h2{
 		color:#ffffff;
 		margin-top:20px;
@@ -297,6 +356,18 @@ table th, table td{
 		top:0;
 		z-index:10;
 	}
+	
+	.content-box-bg-mbb{
+		border:5px solid #f8f4eb;
+		background:#005596;		
+		opacity:0.9;
+		width:940px;
+		height:310px;
+		position:absolute;
+		right:0;
+		top:60px;
+		z-index:10;
+	}
 
 /***************************************************
 			CONTACT
@@ -323,6 +394,7 @@ table th, table td{
 			DROPDOWN MENU
 ***************************************************/
 .ddsmoothmenu {
+	clear:right;
 	margin: 15px 0 0;
 	display: block;
 	float: right;
@@ -420,7 +492,7 @@ table th, table td{
 			FEATURED SLIDESHOW
 ***************************************************/
 
-#featured {
+#featured, #yb-slides {
     position:relative;
 	margin-bottom:30px;
     width:950px; /* Change this to your images width */
@@ -679,6 +751,7 @@ ol li .photo img{
 	float:right;
 	padding-top:7px;
 }
+#basicsearch form{float:left; margin-right:7px;}
 
 #basicsearch input[type=text]{
 	background:#F8F4EB url(../images/search.png) 100% 3px no-repeat;
@@ -782,10 +855,61 @@ div.toggle_min  {
 	/*padding:0 20px;	*/
 }
 
+/*===============================================================================================================
+	PAGINATION
+===============================================================================================================*/
+
+.pagination { margin: 0; text-align:center; }
+
+.comments-pagination {
+	margin-bottom: 30px;
+	margin-top: -20px;
+}
+
+	.pagination a, .pagination span {
+		border: 1px solid transparent;
+		color: #9c9c9c;
+		display: inline-block;
+		margin: 0 8px 0 0;
+		padding: 2px 8px 4px;
+	}
+
+	.comments-pagination a, .comments-pagination span {
+		margin-right: 5px;
+		padding-bottom: 3px;
+	}
+
+	.ie7 .pagination li, .ie7 .pagination span { display: inline; }
+
+	.pagination .current {
+		background: #e6edef;
+		color: #707070;
+		padding: 2px 7px 4px;
+	}
+
+	.comments-pagination .current { padding-bottom: 3px; }
+
+		.pagination a:hover, .comments-pagination a:hover {
+			border-color: #e6edef;
+			color: #ff6633;
+		}
+
+	.pagination .next, .pagination .prev { border: none; }
+
 /***************************************************
 			GENERAL CLASS
 ***************************************************/
-
+.button{
+	background-color:#005596;
+	padding:5px 15px;
+	border-radius:6px;
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+	display:inline-block;
+	text-transform:uppercase;
+}
+.button:hover{background-color:#51b948;}
+a.button{color:#ffffff;}
 .wp-pagenavi{
 	margin-top: 20px!important;
 }
@@ -793,6 +917,13 @@ div.toggle_min  {
 .archive-list{
 	list-style:none!important;
 	margin-left:0!important;
+	clear:both;
+}
+.archive-list a.thumbnail{
+	display:block;
+	float:left;
+	margin-right:15px;
+	border:3px solid #f0ead7;
 }
 
 /* Alignment */
@@ -880,4 +1011,4 @@ span.datepost{
 	display: block;
 }
 
-.last{margin-right:0;}
+.last{margin-right:0!important;}

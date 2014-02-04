@@ -1,13 +1,34 @@
-    <div id="footer">
-    	
-        <?php wp_nav_menu(array('theme_location' => 'footer', 'container_id' => 'footer-links', 'container_class' => 'footermenu', 'after' => ' -')); ?>
-        
-		Copyright &copy; 2012, Habitat Cambodia. All rights reserved.
-    </div>
-    <!--/footer-->
     
+</div><!--/wrap-->
+
+<div id="footer">
+	<div class="footer-patern"></div>
+    <div class="footer-content">
+    <div class="footer-wrap">
+    	<div class="copyright">
+	<?php wp_nav_menu(array('theme_location' => 'footer', 'container_id' => 'footer-links', 'container_class' => 'footermenu', 'after' => ' -')); ?>
+    
+    Copyright &copy; 2012, Habitat Cambodia. All rights reserved.
+    	</div> <!--.copyright-->
+    	<div class="social-network">
+        	<span>Join us on:</span>
+            <a href="<?php get_option_tree('url_facebook', '', true); ?>" title="Facebook" target="_blank">
+           	<img src="<?php bloginfo('template_url'); ?>/images/facebook-icon.png" />
+            </a>
+	    <a href="<?php get_option_tree('url_twitter', '', true); ?>" title="Youtube" target="_blank">
+           	<img src="<?php bloginfo('template_url'); ?>/images/twitter-icon.png" />
+            </a>
+            <a href="<?php get_option_tree('url_youtube', '', true); ?>" title="Youtube" target="_blank">
+           	<img src="<?php bloginfo('template_url'); ?>/images/you-tube-icon.png" />
+            </a>
+            
+        </div> <!--.social-network-->
+        <div class="clear"></div>
+    </div>
+    </div>
 </div>
-<!--/wrap-->
+<!--/footer-->
+
 <?php wp_footer(); ?>
 
 <script type="text/javascript"> Cufon.now(); </script> 

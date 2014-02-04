@@ -31,18 +31,21 @@
               <ul class="archive-list">
                 <?php while (have_posts()) : the_post(); ?>
               	<li>
-               	<h4><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>                     
+               	<h4><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>                
+                <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="thumbnail"><img src="<?php bloginfo('template_url'); ?>/script/timthumb.php?src=<?php echo get_first_image(); ?>&amp;w=140&amp;h=110&amp;zc=1&amp;q=100" alt="<?php the_title(); ?>" /></a>
+                  
                 <span class="datepost"><?php the_time('F j, Y') ?></span>                  
                 <?php the_excerpt(''); ?>                
                 </li>  
               	<?php endwhile; ?>
 			  </ul>
               
-				<?php
-                    if (function_exists('wp_pagenavi')) {
-                        wp_pagenavi();
-                    }					
-                ?>		
+				<?php // Pagination
+					if(function_exists('wp_pagenavi'))
+						wp_pagenavi();
+					else 
+						echo sp_pagination(); 
+				?>		
                 
                 <?php else : ?>            
                 <p>Sorry, Please try to search form below again:</p>
