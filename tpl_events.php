@@ -20,7 +20,7 @@ Template Name: Events Page
             ?>        
             <?php
 			
-				$wpq = array ('post_type' => 'events', 'orderby' => 'name', 'order' => 'desc', 'post_status' => 'publish', 'paged' => $paged, 'posts_per_page' => 16);
+				$wpq = array ('post_type' => 'events', 'order' => 'desc', 'post_status' => 'publish', 'paged' => $paged, 'posts_per_page' => 16);
 				
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 											
@@ -33,8 +33,9 @@ Template Name: Events Page
 			<ul>
             <?php while(have_posts()) : the_post(); ?>            
             <li>            	
-                <?php the_title(); ?> in <?php echo get_post_meta($post->ID, 'o_event_location', 23231); ?><br />
+                <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a><br />
                 <span class="datepost"><?php echo get_post_meta($post->ID, 'o_event_date', 23231); ?></span>
+                <span class="event-place"> in <?php echo get_post_meta($post->ID, 'o_event_location', 23231); ?></span>
             </li>    
             <?php		
 					endwhile; 

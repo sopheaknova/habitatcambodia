@@ -620,15 +620,16 @@ a:active img[class*="wp-image-"],
 	list-style:none;
 }
 
-.upcoming h3, .upcoming h4, .upcoming h5, .upcoming li{
+.upcoming h3, .upcoming h4, .upcoming h5, .upcoming li a{
 	color:#ffffff;
 }
 
-.upcoming span.datepost{
+.upcoming span.datepost, .upcoming span.event-place{
 	color:#51b948;
 	font-size:14px;
 	font-style:italic;
 }
+span.datepost, span.event-place{display: inline-block;}
 
 
 /***************************************************

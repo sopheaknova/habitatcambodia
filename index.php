@@ -58,7 +58,7 @@
 
     <?php 	  	
 
-		$wpq = array ('post_type' => 'gallery', 'orderby' => 'name', 'order' => 'asc', 'gallery-categories' => 'image-gallery', 'post_status' => 'publish', 'posts_per_page' => 10);
+		$wpq = array ('post_type' => 'gallery', 'order' => 'desc', 'gallery-categories' => 'image-gallery', 'post_status' => 'publish', 'posts_per_page' => 10);
 
 		$query = new WP_Query( $wpq );
 
@@ -141,7 +141,7 @@
 
         <?php
 
-		$wpq = array ('post_type' => 'events', 'orderby' => 'name', 'order' => 'desc', 'post_status' => 'publish', 'paged' => $paged, 'posts_per_page' => 4);
+		$wpq = array ('post_type' => 'events', 'order' => 'desc', 'post_status' => 'publish', 'paged' => $paged, 'posts_per_page' => 4);
 
 		 	  	
 
@@ -157,9 +157,9 @@
 
         <li>
 
-			<?php the_title(); ?> in <?php echo get_post_meta($post->ID, 'o_event_location', 23231); ?><br />
-
+			      <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a><br />
             <span class="datepost"><?php echo get_post_meta($post->ID, 'o_event_date', 23231); ?></span>
+            <span class="event-place"> in <?php echo get_post_meta($post->ID, 'o_event_location', 23231); ?></span>
 
         </li>
 
