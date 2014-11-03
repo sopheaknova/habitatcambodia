@@ -694,8 +694,8 @@ div.profile{
 	text-align:center;
 }
 
-span{
-	display:block;
+div.profile span{
+	display:block!important;
 }	
 
 span.name{
